@@ -10,4 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require twitter/bootstrap
  */
+ 
+ .realign{position:relative; bottom:19px;}
