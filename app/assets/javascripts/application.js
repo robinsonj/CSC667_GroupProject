@@ -15,7 +15,3 @@
 //= require turbolinks
 //= require_tree .
 //= require twitter/bootstrap
-
-$(document).ready(function() {
-	$('#content').load('pages/front'); //loads when user first visits homepage
-});
