@@ -1,0 +1,44 @@
+<div style="position:relative; left:17px;"><h2>Post Leftovers</h2></div>
+<div class="col-md-7" style="position:relative; left:235px;">
+	<form action="write.php" method="post">
+		<div class="">
+			<div class="row" style="margin-top:40px;">
+	            <div class="well well-sm">				
+                    <div class="row" id="post-review-box" >
+                        <div class="col-md-12">			
+                            <h3>Your Leftovers</h3>										
+                            <input id="user_id-hidden" name="user_id" type="hidden" value="1"> 
+                            <input id="listing_id-hidden" name="listing_id" type="hidden" value="1"> 
+
+                            <textarea class="form-control" id="new-title" name="title" placeholder="Title, e.g. '200 pounds of bacon'" rows="1"></textarea><br />
+                            <textarea class="form-control" cols="50" rows="5" id="new-description" name="description" placeholder="Enter description of food/ any special instructions..."></textarea><br />
+
+                            <!-- The fileinput-button span is used to style the file input field as button -->
+                            <span class="btn btn-success fileinput-button">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                    <span>Add images .jpg, .png</span>
+                                    <!-- The file input field used as target for the file upload widget -->
+                                    <input id="fileupload" type="file" name="files[]" multiple>
+                            </span>
+                            <br>
+                            <br>
+                            <!-- The global progress bar -->
+                            <div id="progress" class="progress">
+                                    <div class="progress-bar progress-bar-success"></div>
+                            </div>
+
+                                    <!-- The container for the uploaded files -->
+                            <div id="files" class="files"></div>
+                            <br>
+                            <!-- end file input-->
+
+                            <button class="btn btn-warning btn-lg inline" type="Cancel" name="Cancel" value="Cancel">Cancel</button>										                  
+                            <button class="btn btn-success btn-lg pull-right" type="submit" name="submit" value="Submit">Post Leftovers</button>
+
+                        </div>
+                    </div>
+            	</div> 
+			</div>
+		</div>
+	</form>
+</div>

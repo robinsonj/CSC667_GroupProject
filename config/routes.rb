@@ -2,6 +2,11 @@ CSC667Groupproject::Application.routes.draw do
   get "pages/front"
   get "pages/home"
   get "pages/events"
+  get "pages/postings"
+  get "pages/donate"
+  get "pages/postevent"
+  get "pages/aboutus"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -5,4 +5,12 @@ class PagesController < ApplicationController
   end
   def events
   end
+  def postings
+  end
+  def donate
+  end
+  def postevent
+  end
+  def aboutus
+  end
 end
