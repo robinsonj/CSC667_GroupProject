@@ -19,8 +19,14 @@
 	    <ul class="nav navbar-nav">
 	      <li class="active"><a href="pages/front">Home</a></li>
 	      <li><a href="pages/events">Events</a></li>
-	      <li><a href="pages/donate">How to Help</a></li>
-	      <li><a href="pages/postevent">Post an Event</a></li>
+	      <li class="dropdown">
+	        <a href="#" id="howtohelp" class="dropdown-toggle" data-toggle="dropdown">How to Help <b class="caret"></b></a>
+	        <ul class="dropdown-menu" role="menu">
+	          <li><a href="pages/donate">Donate Food</a></li>
+	          <li><a href="pages/donationlist">List of Donations</a></li>
+	          <li><a href="pages/postevent">Post an Event</a></li>
+	        </ul>
+	      </li>
 	      <li><a href="pages/aboutus">About Us</a></li>
 	    </ul>
 
@@ -53,7 +59,7 @@
 
 <hr>
 <center>
-	<p>SFSU CSC 667 Project made by:</br>
+	<p>SFSU CSC 667 Student Project made by:</br>
 		<b>Suchi Vora</b>, <b>Pavitra Kansara</b>, <b>Joe Robinson</b> and <b>Marco Chin</b></p>
 </center>
 
@@ -65,7 +71,7 @@
 		$('#content').load('pages/front'); //loads when user first visits homepage
 	});
 
-	$('a').not('#privacy').on("click", function(e) { //for links outside of content pane
+	$('a').not('#privacy, #howtohelp').on("click", function(e) { //for links outside of content pane
 		var page = $(this).attr('href');
 		$('#content').load(page);
 		e.preventDefault(); //prevents default page refresh.
