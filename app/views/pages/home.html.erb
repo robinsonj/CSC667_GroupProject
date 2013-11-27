@@ -67,7 +67,9 @@
 	===============================================================-->
 
 <script>
-	
+	$(document).ready(function() {
+		$('#content').load('pages/front'); //loads when user first visits homepage
+	});
 
 	$('a').not('#privacy, #howtohelp').on("click", function(e) { //for links outside of content pane
 		var page = $(this).attr('href');
