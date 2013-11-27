@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery_ujs
-//= require jquery
+
 //= require_tree .
 //= require twitter/bootstrap
-
+//= require jquery
