@@ -1,4 +1,7 @@
-== README
+CSC667_GroupProject README
+
+Basic rails application built by group for CSC 667.
+By: Pavitra, Suchi, Marco, Joe.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
