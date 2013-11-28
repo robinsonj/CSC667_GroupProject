@@ -6,7 +6,6 @@ gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-<<<<<<< HEAD
 # Use sqlite3 as Active Record (database for development).
 group :development do
     gem 'sqlite3'
