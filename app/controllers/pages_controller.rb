@@ -17,4 +17,9 @@ class PagesController < ApplicationController
   end
   def donationposts
   end
+  def confirmation
+  end
+  def newdonation
+
+  end
 end
