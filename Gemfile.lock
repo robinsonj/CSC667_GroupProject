@@ -125,9 +125,15 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails
+<<<<<<< HEAD
+  pg (= 0.17.0)
+  rails (= 4.0.0)
+  rails_12factor (= 0.0.2)
+=======
   pg
   rails (= 4.0.0)
   rails_12factor
+>>>>>>> 6e0d32ffc2a9f215daec56f033e2fd7a441f49e9
   sass-rails (~> 4.0.0)
   sdoc
   sqlite3

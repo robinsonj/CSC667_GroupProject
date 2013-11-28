@@ -6,11 +6,16 @@ gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', :group => [:development, :test]
+# Use sqlite3 as Active Record (database for development).
+group :development do
+    gem 'sqlite3'
+end
+
+# Use postgress as Active Record (database for production).
 group :production do
+  gem 'pg', '0.17.0'
   gem 'thin'
-  gem 'pg'
+  gem 'rails_12factor', '0.0.2'
 end
 
 # Use SCSS for stylesheets
