@@ -1,8 +1,14 @@
 CSC667_GroupProject README
-
+==========
 Basic rails application built by group for CSC 667.
 By: Pavitra, Suchi, Marco, Joe.
 
+About
+==========
+This is a basic rails app built in a group environment. An up-to-date deployment can be found at http://fathomless-savannah-9989.herokuapp.com/
+
+Rails
+==========
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -26,6 +32,3 @@ Things you may want to cover:
 
 * ...
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
