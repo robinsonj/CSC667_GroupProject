@@ -10,7 +10,7 @@ group :development do
     gem 'sqlite3'
 end
 
-# Use postgress as Active Record (database for production).
+# Use postgres as Active Record (database for production).
 group :production do
   gem 'pg', '0.17.0'
   gem 'thin'
