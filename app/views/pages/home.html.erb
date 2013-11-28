@@ -69,9 +69,15 @@
 <script>
 	$(document).ready(function() {
 		$('#content').load('pages/front'); //loads when user first visits homepage
+
+		$('.navbar .dropdown').hover(function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();
+	    }, function() {
+	        $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp()
+	    });
 	});
 
-	$('a').not('#privacy, #howtohelp').on("click", function(e) { //for links outside of content pane
+	$('a').not('#howtohelp').on("click", function(e) { //for links outside of content pane
 		var page = $(this).attr('href');
 		$('#content').load(page);
 		e.preventDefault(); //prevents default page refresh.
