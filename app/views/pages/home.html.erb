@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-inverse" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
-  	<div class="container">
+  	<div class="">
 	  <div class="navbar-header">
 	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 	      <span class="sr-only">Toggle navigation</span>
@@ -19,24 +19,31 @@
 	    <ul class="nav navbar-nav">
 	      <li class="active"><a href="pages/front">Home</a></li>
 	      <li><a href="pages/events">Events</a></li>
-	      <li><a href="#">Donate Food</a></li>
-	      <li><a href="#">About Us</a></li>
+	      <li class="dropdown">
+	        <a href="#" id="howtohelp" class="dropdown-toggle" data-toggle="dropdown">How to Help <b class="caret"></b></a>
+	        <ul class="dropdown-menu" role="menu">
+	          <li><a href="pages/donate">Donate Food</a></li>
+	          <li><a href="pages/donationlist">List of Donations</a></li>
+	          <li><a href="pages/postevent">Post an Event</a></li>
+	        </ul>
+	      </li>
+	      <li><a href="pages/aboutus">About Us</a></li>
 	    </ul>
 
-	    <form class="navbar-form navbar-left" role="search">
+	    <form action="" method="" class="navbar-form navbar-left" role="search">
 	      <div class="form-group">
-	        <input type="text" class="form-control" placeholder="Search Events...">
+	        <input id="search" type="text" class="form-control" placeholder="Search Events...">
 	      </div>
 	      <div class="form-group">
-	        <input type="text" class="form-control" placeholder="Zip Code...">
+	        <input id="zipcode" type="text" class="form-control" placeholder="Zip Code...">
 	      </div>
 
-	      <button type="submit" class="btn btn-default">Go!</button>
+	      <a id="go" href="pages/events" type="submit" class="btn btn-default">Go!</a>
 	    </form>
 
-	    <div class="nav navbar-nav navbar-right">
-	      <a href="signup.php" class="btn btn-info" style="position:relative; top:7px;">Sign Up!</a>
-	      <a href="login.php" class="btn btn-success" style="position:relative; top:7px;">Login</a>
+	    <div class="nav navbar-nav navbar-left">
+	      <a href="#" class="btn btn-info" style="position:relative; top:7px;">Sign Up!</a>
+	      <a href="#" class="btn btn-success" style="position:relative; top:7px;">Login</a>
 	    </div>
 	  </div><!-- /.navbar-collapse -->
 	</div>
@@ -52,8 +59,8 @@
 
 <hr>
 <center>
-	<p>This is a San Francsico State University CSC 667 Project made by:</br>
-		Suchi Vora, Pavitra Kansara, Joe Robinson and Marco Chin</p>
+	<p>SFSU CSC 667 Student Project made by:</br>
+		<b>Suchi Vora</b>, <b>Pavitra Kansara</b>, <b>Joe Robinson</b> and <b>Marco Chin</b></p>
 </center>
 
 <!-- jquery ajax functions
@@ -64,7 +71,7 @@
 		$('#content').load('pages/front'); //loads when user first visits homepage
 	});
 
-	$('a').not('#privacy').on("click", function(e) { //for links outside of content pane
+	$('a').not('#privacy, #howtohelp').on("click", function(e) { //for links outside of content pane
 		var page = $(this).attr('href');
 		$('#content').load(page);
 		e.preventDefault(); //prevents default page refresh.

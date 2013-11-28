@@ -1,16 +1,21 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap-sass-rails'
+gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+<<<<<<< HEAD
+# Use sqlite3 as Active Record (database for development).
 group :development do
     gem 'sqlite3'
 end
 
+# Use postgress as Active Record (database for production).
 group :production do
   gem 'pg', '0.17.0'
+  gem 'thin'
   gem 'rails_12factor', '0.0.2'
 end
 
@@ -30,7 +35,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+#gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
