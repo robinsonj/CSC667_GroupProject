@@ -85,8 +85,31 @@
 
 	$('#content').on("click", ".link", function(e) { //for links inside the content pane after ajax call
 		var page = $(this).attr('href');
-		$('#content').load(page);
+
+		if($(this).attr('id') === 'postdonation'){ //loads only when you are trying to post a donation
+			var title = $('#new-title').val();
+            var description = $('#new-description').val();
+			if($.trim(title) === "" || $.trim(description) === ""){ //if title or description is blank, give alert
+				alert("Please enter both title and description");
+				return false; //exit!
+			}
+
+			$.ajax({ //ajax call forwards to controller 'new' action. creates record in db. 
+                    type:'POST',
+                    url:'pages/newdonation',
+                    data: {title: title, description: description},
+                    success: function(data){
+                        console.log(data);
+                    }
+                });
+		}
+
+		if($(this).attr('id') === 'postevent'){ //for you joe
+
+		}
+
+		$('#content').load(page); //loads page in div that has 'content' as id
 		e.preventDefault();
-		//prevents default page
+		//prevents default page from loading
 	});
 </script>

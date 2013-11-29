@@ -14,12 +14,13 @@ class PagesController < ApplicationController
   def aboutus
   end
   def donationlist
+    
   end
   def donationposts
   end
   def confirmation
   end
   def newdonation
-
+    Donation.create(:title => params[:title], :description => params[:description])
   end
 end
