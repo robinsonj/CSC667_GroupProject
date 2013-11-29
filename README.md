@@ -1,7 +1,8 @@
-CSC667_GroupProject README
+CSC667_GroupProject
 ==========
 Basic rails application built by group for CSC 667.
-By: Pavitra, Suchi, Marco, Joe.
+
+By: Pavitra Kansara, Suchi Vora, Marco Chin, and Joe Robinson.
 
 About
 ==========
