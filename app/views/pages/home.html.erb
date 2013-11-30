@@ -94,7 +94,7 @@
 				return false; //exit!
 			}
 
-			$.ajax({ //ajax call forwards to controller 'new' action. creates record in db. 
+			$.ajax({ //ajax call forwards to controller 'newdonation' action. creates record in db. 
                     type:'POST',
                     url:'donations/newdonation',
                     data: {title: title, message: message},
@@ -104,7 +104,7 @@
                 });
 		}
 
-		if($(this).attr('id') === 'postevent'){ //for you joe
+		if($(this).attr('id') === 'postevent'){ //for you joe, 'this' refers the the 'post event' button on postevent page
 			//do blah blah
 		}
 
