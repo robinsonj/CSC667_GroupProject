@@ -18,13 +18,13 @@
 	  <div class="collapse navbar-collapse">
 	    <ul class="nav navbar-nav">
 	      <li class="active"><a href="pages/front">Home</a></li>
-	      <li><a href="pages/events">Get Food</a></li>
+	      <li><a href="events/eventslist">Get Food</a></li>
 	      <li class="dropdown">
 	        <a href="#" id="howtohelp" class="dropdown-toggle" data-toggle="dropdown">How to Help <b class="caret"></b></a>
 	        <ul class="dropdown-menu" role="menu">
-	          <li><a href="pages/donate">Donate Food</a></li>
-	          <li><a href="pages/donationlist">List of Donations</a></li>
-	          <li><a href="pages/postevent">Post an Event</a></li>
+	          <li><a href="donations/donate">Donate Food</a></li>
+	          <li><a href="donations/donationlist">List of Donations</a></li>
+	          <li><a href="events/postevent">Post an Event</a></li>
 	        </ul>
 	      </li>
 	      <li><a href="pages/aboutus">About Us</a></li>
@@ -38,7 +38,7 @@
 	        <input id="zipcode" type="text" class="form-control" placeholder="Zip Code...">
 	      </div>
 
-	      <a id="go" href="pages/events" type="submit" class="btn btn-default">Go!</a>
+	      <a id="go" href="events/eventslist" type="submit" class="btn btn-default">Go!</a>
 	    </form>
 
 	    <div class="nav navbar-nav navbar-left">
@@ -88,16 +88,16 @@
 
 		if($(this).attr('id') === 'postdonation'){ //loads only when you are trying to post a donation
 			var title = $('#new-title').val();
-            var description = $('#new-description').val();
-			if($.trim(title) === "" || $.trim(description) === ""){ //if title or description is blank, give alert
-				alert("Please enter both title and description");
+            var message = $('#new-message').val();
+			if($.trim(title) === "" || $.trim(message) === ""){ //if title or message is blank, give alert
+				alert("Please enter both title and a message");
 				return false; //exit!
 			}
 
 			$.ajax({ //ajax call forwards to controller 'new' action. creates record in db. 
                     type:'POST',
-                    url:'pages/newdonation',
-                    data: {title: title, description: description},
+                    url:'donations/newdonation',
+                    data: {title: title, message: message},
                     success: function(data){
                         console.log(data);
                     }
@@ -105,7 +105,7 @@
 		}
 
 		if($(this).attr('id') === 'postevent'){ //for you joe
-
+			//do blah blah
 		}
 
 		$('#content').load(page); //loads page in div that has 'content' as id
