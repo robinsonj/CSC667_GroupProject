@@ -1,0 +1,45 @@
+<div class="container" style="position:relative; top:15px;">
+	<h1>Edit profile</h1></br>
+</div>
+
+<head>
+<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+<script src="js/bootstrap.js" type="text/javascript" language="javascript"></script>
+
+<style type="text/css">
+
+.fileUploadDiv input
+{
+	
+	font-size:14px;
+	cursor:pointer;
+	filter: alpha(opacity=0);
+}
+</style>
+
+<script type="text/javascript" language="javascript">
+	document.getElementById("btnUpload").onchange = function () {
+    document.getElementById("txtUploadFile").value = this.value;
+};
+
+</script>
+</head>
+
+<body>
+	<div class="containersDiv">
+    <section class="register">
+      <h1>Edit Profile</h1>
+      <form  action="#">
+      <div class="reg_section personal_info">
+      <h3>Profile Information</h3>
+      <input type="text" class="form-control" placeholder="Name">
+      <textarea class="form-control" rows="3" placeholder="Address"></textarea>
+      <input type="text" class="form-control" placeholder="Email">
+      <input type="text" class="form-control" placeholder="Contact No">
+      
+      <div class="fileUploadDiv btn">
+    	
+        <input id="btnUpload" type="file" class="upload" />
+		</div>
+    </div>
+</body>
