@@ -1,4 +1,7 @@
 CSC667Groupproject::Application.routes.draw do
+  get "profile/createprofile"
+  get "profile/editprofile"
+  get "profile/viewprofile"
   get "pages/front"
   get "pages/home"
   get "pages/aboutus"  
