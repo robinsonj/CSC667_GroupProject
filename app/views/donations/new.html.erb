@@ -16,14 +16,19 @@
                             <p>
                                 <input id ="photo1" name="photo1" type="file" />
                             </p>-->
-                            <%= form_tag 'donations/create' do%>
+                            <%= form_tag '/donations/create' do%>
                                 
                                 <p>
-                                    <%= text_field_tag 'title', nil, class: 'form-control', placeholder: "Title, e.g. '200 pounds of bacon"%>
+                                    <%= text_field_tag 'title', nil, class: 'form-control', placeholder: "Title, e.g. '200 pounds of bacon" %>
                                 </p>
                                 <p>
                                     <%= text_area_tag 'message', nil, class: "form-control", placeholder: "Enter a message (a description of food/ any special instructions)...", rows: "5"%>
                                 </p>
+                                
+                                <% flash.each do |key, value|%>
+                                    <p><%= value %></p>
+                                <% end %>
+                                <%flash.now[:notice]%> <!-- makes sure to display only for the current instance of the page-->
                                 
                                 <button class="btn btn-warning btn-lg inline" type="Cancel" name="Cancel" value="Cancel">Cancel</button>
                                 <%= submit_tag "Post Donation", class: "btn btn-success btn-lg pull-right"%>                                
