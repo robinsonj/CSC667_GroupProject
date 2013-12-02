@@ -20,7 +20,7 @@
 </div>
 
 <script>
-	$.get( "donations/newdonation", function( data ) {
+	$.get( "/donations/create", function( data ) {
 	  for(var i = data.length-1; i>=0; i--){
 	  	var str = '';
 
@@ -31,11 +31,11 @@
 
 	  	str+= '<div class="container">';
 		str+=	'<a href="#" class="thumbnail col-md-2" data-toggle="modal" data-target="#picture">';
-		str+=		'<img src="assets/example.jpg" alt="golden gate bridge">';
+		str+=		'<img src="/assets/example.jpg" alt="golden gate bridge">';
 		str+=	'</a>';
 		str+=	'<div class="col-md-6">';
 		str+=		'<p>';
-		str+=			'<a href="donations/donationposts/' + data[i].id + '" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a>'; 
+		str+=			'<a href="/donations/donationposts/' + data[i].id + '" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a>'; 
 		str+=			'<span style="padding-left:10px;">';
 		str+=				'<a href="#">Directions</a> </br>';
 		//str+=				'<a href="#"> | Flag for Abuse</a></br>'; no more admin function, so useless

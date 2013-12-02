@@ -1,0 +1,42 @@
+<div style="position:relative; left:17px;"><h1>Donate Food</h1></div>
+<div class="col-md-7" style="position:relative; left:235px;">
+	<!--<form action="pages/confirmation" method="post">-->
+		<div class="">
+			<div class="row" style="margin-top:40px;">
+	            <div class="well well-sm">				
+                    <div class="row" id="post-review-box" >
+                        <div class="col-md-12">			
+                            <h3>Your Donation</h3>										
+                            <!--<input id="user_id-hidden" name="user_id" type="hidden" value="1"> 
+                            <input id="listing_id-hidden" name="listing_id" type="hidden" value="1"> 
+
+                            <textarea class="form-control" id="new-title" name="title1" placeholder="Title, e.g. '200 pounds of bacon'" rows="1"></textarea><br />
+                            <textarea class="form-control" cols="50" rows="5" id="new-message" name="message" placeholder="Enter a message (a description of food/ any special instructions)..."></textarea><br />
+                            
+                            <p>
+                                <input id ="photo1" name="photo1" type="file" />
+                            </p>-->
+                            <%= form_tag 'donations/create' do%>
+                                
+                                <p>
+                                    <%= text_field_tag 'title', nil, class: 'form-control', placeholder: "Title, e.g. '200 pounds of bacon"%>
+                                </p>
+                                <p>
+                                    <%= text_area_tag 'message', nil, class: "form-control", placeholder: "Enter a message (a description of food/ any special instructions)...", rows: "5"%>
+                                </p>
+                                
+                                <button class="btn btn-warning btn-lg inline" type="Cancel" name="Cancel" value="Cancel">Cancel</button>
+                                <%= submit_tag "Post Donation", class: "btn btn-success btn-lg pull-right"%>                                
+                            <% end %>
+
+                            <!--<button class="btn btn-warning btn-lg inline" type="Cancel" name="Cancel" value="Cancel">Cancel</button>										                  
+                            <a href="pages/confirmation" class="btn btn-success btn-lg pull-right link" id="postdonation">Post Donation</a>-->
+
+                        </div>
+                    </div>
+            	</div> 
+			</div>
+		</div>
+	<!--</form>-->
+</div>
+

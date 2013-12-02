@@ -8,7 +8,84 @@
 </head>
 <body>
 
+<!-- Nav Bar
+===============================================================-->
+
+<nav class="navbar navbar-inverse" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  	<div class="container">
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	      <span class="sr-only">Toggle navigation</span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+	    <a class="navbar-brand" href="/pages/home">The Compost Bin</a>
+	  </div>
+
+	  <!-- Collect the nav links, forms, and other content for toggling -->
+	  <div class="collapse navbar-collapse">
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="/pages/home">Home</a></li>
+	      <li><a href="/events/eventslist">Get Food</a></li>
+	      <li class="dropdown">
+	        <a href="#" id="howtohelp" class="dropdown-toggle" data-toggle="dropdown">How to Help <b class="caret"></b></a>
+	        <ul class="dropdown-menu" role="menu">
+	          <li><a href="/donations/new">Donate Food</a></li>
+	          <li><a href="/donations/donationlist">List of Donations</a></li>
+	          <li><a href="/events/postevent">Post an Event</a></li>
+	        </ul>
+	      </li>
+	      <li><a href="/pages/aboutus">About Us</a></li>
+	    </ul>
+
+	    <form action="" method="" class="navbar-form navbar-left" role="search">
+	      <div class="form-group">
+	        <input id="search" type="text" class="form-control" placeholder="Search Events...">
+	      </div>
+	      <div class="form-group">
+	        <input id="zipcode" type="text" class="form-control" placeholder="Zip Code...">
+	      </div>
+
+	      <a id="go" href="/events/eventslist" type="submit" class="btn btn-default">Go!</a>
+	    </form>
+
+	    <div class="nav navbar-nav navbar-left">
+	      <a href="#" class="btn btn-info" style="position:relative; top:7px;">Sign Up!</a>
+	      <a href="#" class="btn btn-success" style="position:relative; top:7px;">Login</a>
+	    </div>
+	  </div><!-- /.navbar-collapse -->
+	</div>
+</nav>
+
+
+<div id="content" class="container realign">
 <%= yield %>
+</div>
+
+
+
+<!-- Footer
+	===============================================================-->
+
+<hr>
+<center>
+	<p>SFSU CSC 667 Student Project made by:</br>
+		<b>Suchi Vora</b>, <b>Pavitra Kansara</b>, <b>Joe Robinson</b> and <b>Marco Chin</b></p>
+</center>
+
+<script>
+$(document).ready(function() {
+
+	$('.navbar .dropdown').hover(function() {
+    $(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();
+    }, function() {
+        $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp()
+    });
+});
+</script>
+
 
 </body>
 </html>

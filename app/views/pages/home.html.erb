@@ -1,125 +1,56 @@
-<!-- Nav Bar
-	===============================================================-->
+<div id="carousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel" data-slide-to="1"></li>
+    <li data-target="#carousel" data-slide-to="2"></li>
+  </ol>
 
-<nav class="navbar navbar-inverse" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  	<div class="container">
-	  <div class="navbar-header">
-	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	      <span class="sr-only">Toggle navigation</span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </button>
-	    <a class="navbar-brand" href="pages/front">The Compost Bin</a>
-	  </div>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="/assets/apple.jpg" alt="apple">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <img src="/assets/bread.jpg" alt="bread">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <img src="/assets/wine.jpg" alt="wine">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+  </div>
 
-	  <!-- Collect the nav links, forms, and other content for toggling -->
-	  <div class="collapse navbar-collapse">
-	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="pages/front">Home</a></li>
-	      <li><a href="events/eventslist">Get Food</a></li>
-	      <li class="dropdown">
-	        <a href="#" id="howtohelp" class="dropdown-toggle" data-toggle="dropdown">How to Help <b class="caret"></b></a>
-	        <ul class="dropdown-menu" role="menu">
-	          <li><a href="donations/donate">Donate Food</a></li>
-	          <li><a href="donations/donationlist">List of Donations</a></li>
-	          <li><a href="events/postevent">Post an Event</a></li>
-	        </ul>
-	      </li>
-	      <li><a href="pages/aboutus">About Us</a></li>
-	    </ul>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
 
-	    <form action="" method="" class="navbar-form navbar-left" role="search">
-	      <div class="form-group">
-	        <input id="search" type="text" class="form-control" placeholder="Search Events...">
-	      </div>
-	      <div class="form-group">
-	        <input id="zipcode" type="text" class="form-control" placeholder="Zip Code...">
-	      </div>
+<div class="row container"> <!--orients your text inline-->
+	<center>
+			<div class="col-md-6 well">
+				<h2>Are you a supplier?</h2>
+				<p>If you are an organization (for example: restaurant, supermarket, or farm) that would like to donate food,
+					please login and click "Donate Food."</p>
+				<a href="/donations/new" class="btn btn-primary btn-lg link">Donate Food</a>
+			</div>
 
-	      <a id="go" href="events/eventslist" type="submit" class="btn btn-default">Go!</a>
-	    </form>
-
-	    <div class="nav navbar-nav navbar-left">
-	      <a href="#" class="btn btn-info" style="position:relative; top:7px;">Sign Up!</a>
-	      <a href="#" class="btn btn-success" style="position:relative; top:7px;">Login</a>
-	    </div>
-	  </div><!-- /.navbar-collapse -->
-	</div>
-</nav>
-
-<!-- Content Div where ajax gets loaded
-	===============================================================-->
-
-<div id="content" class="container realign"></div>
-
-<!-- Footer
-	===============================================================-->
-
-<hr>
-<center>
-	<p>SFSU CSC 667 Student Project made by:</br>
-		<b>Suchi Vora</b>, <b>Pavitra Kansara</b>, <b>Joe Robinson</b> and <b>Marco Chin</b></p>
-</center>
-
-<!-- jquery ajax functions
-	===============================================================-->
-
-<script>
-	$(document).ready(function() {
-		$('#content').load('pages/front'); //loads when user first visits homepage
-
-		$('.navbar .dropdown').hover(function() {
-        $(this).find('.dropdown-menu').first().stop(true, true).delay(250).slideDown();
-	    }, function() {
-	        $(this).find('.dropdown-menu').first().stop(true, true).delay(100).slideUp()
-	    });
-	});
-
-	$('a').not('#howtohelp').on("click", function(e) { //for links outside of content pane
-		var page = $(this).attr('href');
-		$('#content').load(page);
-		e.preventDefault(); //prevents default page refresh.
-	});
-
-	$('#content').on("click", ".link", function(e) { //for links inside the content pane after ajax call, label all links inside content pane with class link.
-		var page = $(this).attr('href');
-
-		var months = new Array('January', ' February', 'March', 'April', 'May', 
-                'June', 'July', 'August', 'September', 'October', 'November', 'December');
-
-		var daysOfWeek = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-
-		if($(this).attr('id') === 'postdonation'){ //loads only when you are trying to post a donation
-			var title = $('#new-title').val();
-            var message = $('#new-message').val();
-            var date = new Date();
-            var month = date.getMonth();
-            var day = date.getDate();
-            var dayOfWeek = date.getDay();
-
-			if($.trim(title) === "" || $.trim(message) === ""){ //if title or message is blank, give alert
-				alert("Please enter both title and a message");
-				return false; //exit!
-			}
-
-			$.ajax({ //ajax call forwards to controller 'newdonation' action. creates record in db. 
-                    type:'POST',
-                    url:'donations/newdonation',
-                    data: {title: title, message: message, month: months[month], day: day, dayofweek: daysOfWeek[dayOfWeek]},
-                    success: function(data){
-                        console.log(data);
-                    }
-                });
-		}//end if
-
-		if($(this).attr('id') === 'postevent'){ //for you joe, 'this' refers the the 'post event' button on postevent page
-			//do blah blah
-		}//end if
-
-		$('#content').load(page); //loads page in div that has 'content' as id
-		e.preventDefault();
-		//prevents default page from loading
-	});
-</script>
+			<div class="col-md-6 well">
+				<h2>Are you a distributor?</h2>
+				<p>To contact suppliers and pickup donations, click "List of Donations." To post your upcoming events to distrbute food, click "Post Event."</p>
+				<a href="/donations/donationlist" class="btn btn-primary btn-lg link">List of Donations</a>
+				<a href="/events/postevent" class="btn btn-primary btn-lg link">Post Event</a>
+			</div>
+	</center>
+</div>

@@ -1,5 +1,5 @@
 class DonationsController < ApplicationController
-	def donate
+	def new
 	end
 	def donationlist
 	end
@@ -8,10 +8,11 @@ class DonationsController < ApplicationController
 			@donation = Donation.find(params[:id])
 		end
 	end
-	def newdonation
+	def create
 	    if params[:title].present? && params[:message].present?
 	      Donation.create(:title => params[:title], :message => params[:message], :month => params[:month],
 	      	:day => params[:day], :dayofweek=> params[:dayofweek])
+	      render "/pages/confirmation"
 	      return #if it's a creation call, exit after.
 	    end
 	    @donations = Donation.all
