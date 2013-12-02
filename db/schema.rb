@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131128062343) do
+ActiveRecord::Schema.define(version: 20131201042004) do
 
   create_table "donations", force: true do |t|
     t.text     "title"
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "dayofweek"
+    t.string   "month"
+    t.string   "day"
   end
 
 end

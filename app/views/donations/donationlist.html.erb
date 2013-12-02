@@ -2,104 +2,9 @@
 	<h1>List of Donations</h1> 
 	<p>(1-10) of 10 <!--<a href="#" style="padding-left:15px;">Local</a> | <a href="#">All</a>--></p>
 </div>
+<br>
 
-<!-- Nov 28 
-	===============================================================-->
-
-<hr>
-<center><h4>Wednesday, November 20</h4></center></br>
-<div class="container">
-	<a href="#" class="thumbnail col-md-2" data-toggle="modal" data-target="#picture">
-		<img src="assets/example.jpg" alt="golden gate bridge">
-	</a>
-	<div class="col-md-6">
-		<p>
-			<a href="donations/donationposts" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a> 
-			<span style="padding-left:10px;">
-				<a href="#">Directions</a> |
-				<a href="#">Flag for Abuse</a></br>
-			</span>
-			634 Curry St. San Fransisco, CA 94123</br>
-			Tel: 415-123-3334 <span style="padding-left:10px;">Email: info@laframosco.com</span></br>
-
-			<p><b>200 pounds of bacon need to be gone! pick-up between 8pm-9pm</b><br>
-				We ordered a surplus of bacon! 200 pounds to be exact. Meat company will not take returns
-				so please...
-			</p>
-		</p>
-	</div>
-</div></br>
-
-<div class="container">
-	<a href="#" class="thumbnail col-md-2" data-toggle="modal" data-target="#picture">
-		<img src="assets/example.jpg" alt="golden gate bridge">
-	</a>
-	<div class="col-md-6">
-		<p>
-			<a href="donations/donationposts" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a> 
-			<span style="padding-left:10px;">
-				<a href="#">Directions</a> |
-				<a href="#">Flag for Abuse</a></br>
-			</span>
-			634 Curry St. San Fransisco, CA 94123</br>
-			Tel: 415-123-3334 <span style="padding-left:10px;">Email: info@laframosco.com</span></br>
-
-			<p><b>200 pounds of bacon need to be gone! pick-up between 8pm-9pm</b><br>
-				We ordered a surplus of bacon! 200 pounds to be exact. Meat company will not take returns
-				so please...
-			</p>
-		</p>
-	</div>
-</div></br>
-
-<!-- Dec 24
-	===============================================================-->
-
-<hr>
-<center><h4>Tuesday, December 4</h4></center></br>
-<div class="container">
-	<a href="#" class="thumbnail col-md-2" data-toggle="modal" data-target="#picture">
-		<img src="assets/example.jpg" alt="golden gate bridge">
-	</a>
-	<div class="col-md-6">
-		<p>
-			<a href="donations/donationposts" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a> 
-			<span style="padding-left:10px;">
-				<a href="#">Directions</a> |
-				<a href="#">Flag for Abuse</a></br>
-			</span>
-			634 Curry St. San Fransisco, CA 94123</br>
-			Tel: 415-123-3334 <span style="padding-left:10px;">Email: info@laframosco.com</span></br>
-
-			<p><b>200 pounds of bacon need to be gone again! pick-up between 8pm-9pm</b><br>
-				We ordered a surplus of bacon again! 200 pounds to be exact. Meat company will not take returns
-				so please...
-			</p>
-		</p>
-	</div>
-</div></br>
-
-<div class="container">
-	<a href="#" class="thumbnail col-md-2" data-toggle="modal" data-target="#picture">
-		<img src="assets/example.jpg" alt="golden gate bridge">
-	</a>
-	<div class="col-md-6">
-		<p>
-			<a href="donations/donationposts" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a> 
-			<span style="padding-left:10px;">
-				<a href="#">Directions</a> |
-				<a href="#">Flag for Abuse</a></br>
-			</span>
-			634 Curry St. San Fransisco, CA 94123</br>
-			Tel: 415-123-3334 <span style="padding-left:10px;">Email: info@laframosco.com</span></br>
-
-			<p><b>200 pounds of bacon need to be gone again! pick-up between 8pm-9pm</b><br>
-				We ordered a surplus of bacon again! 200 pounds to be exact. Meat company will not take returns
-				so please...
-			</p>
-		</p>
-	</div>
-</div></br>
+<div id="result"></div>
 
 <!-- pagination
 	===============================================================-->
@@ -114,11 +19,40 @@
 	</ul>
 </div>
 
-<div id="result"></div>
-
 <script>
 	$.get( "donations/newdonation", function( data ) {
-	  $( "#result" ).html( data );
-	  alert(data);
+	  for(var i = data.length-1; i>=0; i--){
+	  	var str = '';
+
+	  	if(i == data.length-1 || data[i].dayofweek!==data[i+1].dayofweek || data[i].month!==data[i+1].month //determines if you need a hr line w/date
+	  		|| data[i].day!==data[i+1].day){
+	  			str+='<hr><center><h4>' + data[i].dayofweek + ', ' +  data[i].month + ' ' + data[i].day + '</h4></center></br>';
+	  	}
+
+	  	str+= '<div class="container">';
+		str+=	'<a href="#" class="thumbnail col-md-2" data-toggle="modal" data-target="#picture">';
+		str+=		'<img src="assets/example.jpg" alt="golden gate bridge">';
+		str+=	'</a>';
+		str+=	'<div class="col-md-6">';
+		str+=		'<p>';
+		str+=			'<a href="donations/donationposts/' + data[i].id + '" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a>'; 
+		str+=			'<span style="padding-left:10px;">';
+		str+=				'<a href="#">Directions</a> </br>';
+		//str+=				'<a href="#"> | Flag for Abuse</a></br>'; no more admin function, so useless
+		str+=			'</span>';
+		str+=			'634 Curry St. San Fransisco, CA 94123</br>';
+		str+=			'Tel: 415-123-3334 <span style="padding-left:10px;">Email: info@laframosco.com</span></br>';
+
+		str+=			'<p><b>' + data[i].title +'</b><br>';
+		str+=				data[i].message.substring(0,200);
+		str+=			'</p>';
+		str+=		'</p>';
+		str+=	'</div>';
+		str+='</div></br>';
+
+	  	document.getElementById('result').innerHTML+=str; //adds entire string to div with id 'result'
+	  }
+	  //alert(data[0].title);
 	});
+
 </script>

@@ -83,12 +83,22 @@
 		e.preventDefault(); //prevents default page refresh.
 	});
 
-	$('#content').on("click", ".link", function(e) { //for links inside the content pane after ajax call
+	$('#content').on("click", ".link", function(e) { //for links inside the content pane after ajax call, label all links inside content pane with class link.
 		var page = $(this).attr('href');
+
+		var months = new Array('January', ' February', 'March', 'April', 'May', 
+                'June', 'July', 'August', 'September', 'October', 'November', 'December');
+
+		var daysOfWeek = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
 
 		if($(this).attr('id') === 'postdonation'){ //loads only when you are trying to post a donation
 			var title = $('#new-title').val();
             var message = $('#new-message').val();
+            var date = new Date();
+            var month = date.getMonth();
+            var day = date.getDate();
+            var dayOfWeek = date.getDay();
+
 			if($.trim(title) === "" || $.trim(message) === ""){ //if title or message is blank, give alert
 				alert("Please enter both title and a message");
 				return false; //exit!
@@ -97,16 +107,16 @@
 			$.ajax({ //ajax call forwards to controller 'newdonation' action. creates record in db. 
                     type:'POST',
                     url:'donations/newdonation',
-                    data: {title: title, message: message},
+                    data: {title: title, message: message, month: months[month], day: day, dayofweek: daysOfWeek[dayOfWeek]},
                     success: function(data){
                         console.log(data);
                     }
                 });
-		}
+		}//end if
 
 		if($(this).attr('id') === 'postevent'){ //for you joe, 'this' refers the the 'post event' button on postevent page
 			//do blah blah
-		}
+		}//end if
 
 		$('#content').load(page); //loads page in div that has 'content' as id
 		e.preventDefault();

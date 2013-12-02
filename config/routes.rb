@@ -10,7 +10,7 @@ CSC667Groupproject::Application.routes.draw do
 
   get "donations/donate"
   get "donations/donationlist"
-  get "donations/donationposts"
+  get "donations/donationposts(/:id)" => "donations#donationposts"
   get "donations/newdonation"
   post "donations/newdonation"
   
