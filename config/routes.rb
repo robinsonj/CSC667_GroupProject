@@ -12,8 +12,9 @@ CSC667Groupproject::Application.routes.draw do
   get "events/postevent"
 
   get "donations/new"
+  post "donations/new"
   get "donations/donationlist"
-  get "donations/donationposts(/:id)" => "donations#donationposts"
+  get "donations/show(/:id)" => "donations#show"
   get "donations/create"
   post "donations/create"
 

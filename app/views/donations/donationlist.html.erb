@@ -4,7 +4,37 @@
 </div>
 <br>
 
-<div id="result"></div>
+<% (@donations.length-1).downto(0) do |i|%>
+	<%if (i==@donations.length-1 || @donations[i].dayofweek!=@donations[i+1].dayofweek || @donations[i].month!=@donations[i+1].month || @donations[i].day!=@donations[i+1].day) %>
+		<hr><center><h4><%= @donations[i].dayofweek %>, <%= @donations[i].month%> <%= @donations[i].day%> </h4></center></br>
+	<% end %>
+
+	<div class="container">
+		<div class="thumbnail col-md-2" >
+		<%= image_tag @donations[i].photo1.url%>
+		</div>
+		<div class="col-md-6">
+			<p>
+				<!--<a href="/donations/donationposts/' + data.id + '" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a>-->
+				<%= link_to 'La Framosco French Cuisine', :controller => "donations", :action => "show", :id => @donations[i].id%>
+				<span style="padding-left:10px;">
+					<a href="#">Directions</a> </br>
+			<!--<a href="#"> | Flag for Abuse</a></br>'; no more admin function, so useless-->
+				</span>
+				634 Curry St. San Fransisco, CA 94123</br>
+				Tel: 415-123-3334 <span style="padding-left:10px;">Email: info@laframosco.com</span></br>
+
+				<p><b><%= @donations[i].title %></b><br>
+					<%= truncate(@donations[i].message, 200) %> <!-- truncate is a function defined in application_helper.rb-->
+				</p>
+			</p>
+		</div>
+	</div></br>
+
+
+<% end %>
+
+
 
 <!-- pagination
 	===============================================================-->
@@ -20,7 +50,7 @@
 </div>
 
 <script>
-	$.get( "/donations/create", function( data ) {
+	/*$.get( "/donations/create", function( data ) {
 	  for(var i = data.length-1; i>=0; i--){
 	  	var str = '';
 
@@ -53,6 +83,6 @@
 	  	document.getElementById('result').innerHTML+=str; //adds entire string to div with id 'result'
 	  }
 	  //alert(data[0].title);
-	});
+	});*/
 
 </script>
