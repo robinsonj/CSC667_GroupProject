@@ -8,7 +8,7 @@
                         <div class="col-md-12">			
                             <h3>Your Donation</h3>										
 
-                            <% flash.each do |key, value|%> <!-- this is how to dispplay flash msgs? -->
+                            <% flash.each do |key, value|%> <!-- this is how to dispplay flash msgs?. -->
                                 <p><font color="red"><%= value %></font></p>
                             <% end %>
                             <%flash.now[:notice]%> <!-- makes sure to display only for the current instance of the page-->
