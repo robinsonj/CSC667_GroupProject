@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131202052844) do
+ActiveRecord::Schema.define(version: 20131205222228) do
 
   create_table "donations", force: true do |t|
     t.text     "title"
@@ -21,6 +21,20 @@ ActiveRecord::Schema.define(version: 20131202052844) do
     t.string   "dayofweek"
     t.string   "month"
     t.string   "day"
+    t.string   "photo1_file_name"
+    t.string   "photo1_content_type"
+    t.integer  "photo1_file_size"
+    t.datetime "photo1_updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.text     "title"
+    t.text     "message"
+    t.string   "dayofweek"
+    t.string   "month"
+    t.string   "day"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "photo1_file_name"
     t.string   "photo1_content_type"
     t.integer  "photo1_file_size"

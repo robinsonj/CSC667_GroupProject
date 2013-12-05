@@ -1,13 +1,6 @@
 class DonationsController < ApplicationController
 	def new
-		months = ['January', ' February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-		daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-		time = Time.new
-
-		@month = months[time.month-1] #have to subtract one because months are returned 1-12 and array is 0-11
-		@dayofweek = daysOfWeek[time.wday]
-		@day = time.day
-
+		#look in application_controller.rb for set date variables
 	end
 	def donationlist
 		@donations = Donation.all

@@ -8,11 +8,12 @@ CSC667Groupproject::Application.routes.draw do
   get "pages/confirmation"
 
   get "events/eventslist"
-  get "events/eventposts"
-  get "events/postevent"
+  get "events/show(/:id)" => "events#show"
+  get "events/new"
+  get "events/create"
+  post "events/create"
 
   get "donations/new"
-  post "donations/new"
   get "donations/donationlist"
   get "donations/show(/:id)" => "donations#show"
   get "donations/create"

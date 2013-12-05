@@ -1,8 +1,10 @@
 class EventsController < ApplicationController
   def eventslist
   end
-  def eventposts
+  def show
   end
-  def postevent
+  def new
+  end
+  def create
   end
 end
