@@ -16,10 +16,10 @@ class DonationsController < ApplicationController
 	      	:day => params[:day], :dayofweek=> params[:dayofweek], :photo1=> params[:photo1])
 	      render "/pages/confirmation"
 	      return #if it's a creation call, exit after.
-	    #else
-	    	#redirect_to '/donations/new', :notice => "Please enter both title and message fields."
+	    else
+	    	redirect_to '/donations/new', :notice => "Please enter both title and message fields."
 	    end
-	    @donations = Donation.all
-	    render json: @donations
+	    #@donations = Donation.all
+	    #render json: @donations
   	end
 end

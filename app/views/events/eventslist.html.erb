@@ -3,105 +3,37 @@
 	<span style="position:relative; bottom:10px;">To get food, check out some of the upcoming events! </span>
 	<p>(1-10) of 10 <!--<a href="#" style="padding-left:15px;">Local</a> | <a href="#">All</a>--></p>
 </div>
+<br>
 
-<!-- Nov 28 
-	===============================================================-->
+<% (@events.length-1).downto(0) do |i|%>
+	<%if (i==@events.length-1 || @events[i].dayofweek!=@events[i+1].dayofweek || @events[i].month!=@events[i+1].month || @events[i].day!=@events[i+1].day) %>
+		<hr><center><h4><%= @events[i].dayofweek %>, <%= @events[i].month%> <%= @events[i].day%> </h4></center></br>
+	<% end %>
 
-<hr>
-<center><h4>Wednesday, November 20</h4></center></br>
-<div class="container">
-	<a href="#" class="thumbnail col-md-2" data-toggle="modal" data-target="#picture">
-		<img src="/assets/example.jpg" alt="golden gate bridge">
-	</a>
-	<div class="col-md-6">
-		<p>
-			<a href="/events/show" class="link"><u style="font-size:22px;">Meals With Feels</u></a> (9am to 6pm)
-			<span style=""> 
-				<a href="#">Directions</a> |
-				<a href="#">Flag for Abuse</a></br>
-			</span>
-			501 Westbrook St. San Fransisco, CA 94132</br>
-			Tel: 415-123-3333 <span style="padding-left:10px; ">Email: info@mealwithfeels.org</span></br>
-			<p><b>Happy Thanksgiving!</b><br>
-				On November 28, We are opening our doors to
-				the needy! Stop by to taste our slop stew, smashed...
+	<div class="container">
+		<div class="thumbnail col-md-2" >
+		<%= image_tag @events[i].photo1.url%>
+		</div>
+		<div class="col-md-6">
+			<p>
+				<!--<a href="/donations/donationposts/' + data.id + '" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a>-->
+				<%= link_to 'La Framosco French Cuisine', :controller => "events", :action => "show", :id => @events[i].id%>
+				<span style="padding-left:10px;">
+					<a href="#">Directions</a> </br>
+			<!--<a href="#"> | Flag for Abuse</a></br>'; no more admin function, so useless-->
+				</span>
+				634 Curry St. San Fransisco, CA 94123</br>
+				Tel: 415-123-3334 <span style="padding-left:10px;">Email: info@laframosco.com</span></br>
+
+				<p><b><%= @events[i].title %></b><br>
+					<%= truncate(@events[i].message, 200) %> <!-- truncate is a function defined in application_helper.rb-->
+				</p>
 			</p>
+		</div>
+	</div></br>
 
-		</p>
-	</div>
-</div></br>
 
-<div class="container">
-	<a href="#" class="thumbnail col-md-2" data-toggle="modal" data-target="#picture">
-		<img src="/assets/example.jpg" alt="golden gate bridge">
-	</a>
-	<div class="col-md-6">
-		<p>
-			<a href="/events/show" class="link"><u style="font-size:22px;">Meals With Feels</u></a> (9am to 6pm) 
-			<span style=""> 
-				<a href="#">Directions</a> |
-				<a href="#">Flag for Abuse</a></br>
-			</span>
-			501 Westbrook St. San Fransisco, CA 94132</br>
-			Tel: 415-123-3333 <span style="padding-left:10px; ">Email: info@mealwithfeels.org</span></br>
-			<p><b>Happy Thanksgiving!</b><br>
-				On November 28, We are opening our doors to
-				the needy! Stop by to taste our slop stew, smashed...
-			</p>
-
-		</p>
-	</div>
-</div></br>
-
-<!-- Dec 24
-	===============================================================-->
-
-<hr>
-<center><h4>Tuesday, December 4</h4></center></br>
-<div class="container">
-	<a href="#" class="thumbnail col-md-2" data-toggle="modal" data-target="#picture">
-		<img src="/assets/example.jpg" alt="golden gate bridge">
-	</a>
-	<div class="col-md-6">
-		<p>
-			<a href="/events/show" class="link"><u style="font-size:22px;">Meals With Feels</u></a> (9am to 6pm) 
-			<span style=""> 
-				<a href="#">Directions</a> |
-				<a href="#">Flag for Abuse</a></br>
-			</span>
-			501 Westbrook St. San Fransisco, CA 94132</br>
-			Tel: 415-123-3333 <span style="padding-left:10px; ">Email: info@mealwithfeels.org</span></br>
-			<p><b>Merry Christmas!</b><br>
-				Oh? back again? I knew you couldn't
-			resist! On Dec, 25th we will have pig farts and horse hooves. And you can
-			wash it all down with a glass of putrid ginger ale.
-			</p>
-
-		</p>
-	</div>
-</div></br>
-
-<div class="container">
-	<a href="#" class="thumbnail col-md-2" data-toggle="modal" data-target="#picture">
-		<img src="/assets/example.jpg" alt="golden gate bridge">
-	</a>
-	<div class="col-md-6">
-		<p>
-			<a href="/events/show" class="link"><u style="font-size:22px;">Meals With Feels</u></a> (9am to 6pm) 
-			<span style=""> 
-				<a href="#">Directions</a> |
-				<a href="#">Flag for Abuse</a></br>
-			</span>
-			501 Westbrook St. San Fransisco, CA 94132</br>
-			Tel: 415-123-3333 <span style="padding-left:10px; ">Email: info@mealwithfeels.org</span></br>
-			<p><b>Merry Christmas!</b><br>
-				Oh? back again? I knew you couldn't
-			resist! On Dec, 25th we will have pig farts and horse hooves. And you can
-			wash it all down with a glass of putrid ginger ale.
-			</p>
-		</p>
-	</div>
-</div></br>
+<% end %>
 
 <!-- pagination
 	===============================================================-->

@@ -18,6 +18,11 @@
                             <button class="btn btn-warning btn-lg inline" type="Cancel" name="Cancel" value="Cancel">Cancel</button> <!--cancel button used  to clear the inout fields-->                                                          
                             <!--<a href="pages/confirmation" class="btn btn-success btn-lg pull-right link" id="postevent">Post Event</a>-->
 
+                            <% flash.each do |key, value|%> <!-- this is how to dispplay flash msgs?. -->
+                                <p><font color="red"><%= value %></font></p>
+                            <% end %>
+                            <%flash.now[:notice]%> <!-- makes sure to display only for the current instance of the page-->
+
                              <!--<%= params.inspect%>-->
                             <%= form_tag '/events/create', :multipart => true do%> <!--need multipart to be able to submit files as part of a post-->
                                 
@@ -26,16 +31,17 @@
                                 <%= hidden_field_tag 'dayofweek', @dayofweek%>
 
                                 <p>
-                                    <%= text_field_tag 'title', nil, class: 'form-control', placeholder: "Title, e.g. 'Come to our event! Free Food!" %>
+                                    <%= text_field_tag 'title', nil, class: 'form-control title', placeholder: "Title, e.g. 'Come to our event! Free Food!" %>
                                 </p>
                                 <p>
-                                    <%= text_area_tag 'message', nil, class: "form-control", placeholder: "Message (a description of the event/ any special instructions)...", rows: "5"%>
+                                    <%= text_area_tag 'message', nil, class: "form-control message", placeholder: "Message (a description of the event/ any special instructions)...", rows: "5"%>
                                 </p>
                                 <p>
-                                    <%= file_field_tag :photo1%>
+                                    <%= file_field_tag :photo1, class: "photo1"%>
                                 </p>
-
-                                <button class="btn btn-warning btn-lg inline" type="Cancel" name="Cancel" value="Cancel">Cancel</button>
+                                <br>
+                                
+                                <a href="#" class="btn btn-warning btn-lg inline clear" name="clear">Clear Form</a>
                                 <%= submit_tag "Post Donation", class: "btn btn-success btn-lg pull-right"%>                                
                             <% end %>
 
