@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  def new
+  	#look in application_controller.rb for set date variables
+  end
   def eventslist
   	@events = Event.all
   end
@@ -6,9 +9,6 @@ class EventsController < ApplicationController
   	if params[:id].present?
 		@event = Event.find(params[:id])
 	end
-  end
-  def new
-
   end
   def create
   	if params[:title].present? && params[:message].present?
@@ -19,5 +19,9 @@ class EventsController < ApplicationController
 	    else
 	    	redirect_to '/events/new', :notice => "Please enter both title and message fields."
 	    end
+  end
+  def edit
+  end
+  def destroy
   end
 end

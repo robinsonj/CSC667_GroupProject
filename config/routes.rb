@@ -10,14 +10,21 @@ CSC667Groupproject::Application.routes.draw do
   get "events/eventslist"
   get "events/show(/:id)" => "events#show"
   get "events/new"
-  get "events/create"
+  get "events/create" #for debug
   post "events/create"
+  get "events/edit(/:id)" => "events#edit"
+  post "events/edit(/:id)" => "events#edit"
+  delete "events/destroy(/:id)" => "events#destroy"
 
+ 
   get "donations/new"
   get "donations/donationlist"
   get "donations/show(/:id)" => "donations#show"
-  get "donations/create"
+  get "donations/create" #for debug
   post "donations/create"
+  get "donations/edit(/:id)" => "donations#edit"
+  post "donations/edit(/:id)" => "donations#edit"
+  delete "donations/destroy(/:id)" => "donations#destroy"
 
   resources :donations
   

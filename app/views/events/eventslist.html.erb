@@ -18,10 +18,11 @@
 			<p>
 				<!--<a href="/donations/donationposts/' + data.id + '" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a>-->
 				<%= link_to 'La Framosco French Cuisine', :controller => "events", :action => "show", :id => @events[i].id%>
-				<span style="padding-left:10px;">
-					<a href="#">Directions</a> </br>
-			<!--<a href="#"> | Flag for Abuse</a></br>'; no more admin function, so useless-->
+				<span class="pull-right" style="padding-left:10px;">
+					<%= link_to 'Edit ', :controller => "events", :action => "edit", :id => @events[i].id%>|
+					<%= link_to ' Delete', :controller => "events", :action => "destroy", :id => @events[i].id%>
 				</span>
+				<br>
 				634 Curry St. San Fransisco, CA 94123</br>
 				Tel: 415-123-3334 <span style="padding-left:10px;">Email: info@laframosco.com</span></br>
 

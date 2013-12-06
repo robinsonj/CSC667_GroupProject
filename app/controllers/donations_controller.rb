@@ -22,4 +22,8 @@ class DonationsController < ApplicationController
 	    #@donations = Donation.all
 	    #render json: @donations
   	end
+  	def edit
+  	end
+  	def destroy
+  	end
 end
