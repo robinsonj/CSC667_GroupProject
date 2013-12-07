@@ -1,0 +1,41 @@
+<div style="position:relative; left:17px;"><h1>Edit Donation Post</h1></div>
+<div class="col-md-7" style="position:relative; left:235px;">
+	<!--<form action="pages/confirmation" method="post">-->
+		<div class="">
+			<div class="row" style="margin-top:40px;">
+	            <div class="well well-sm">				
+                    <div class="row" id="post-review-box" >
+                        <div class="col-md-12">			
+                            <h3>Your Donation</h3>										
+
+                            <% flash.each do |key, value|%> <!-- this is how to dispplay flash msgs?. -->
+                                <p><font color="red"><%= value %></font></p>
+                            <% end %>
+                            <%flash.now[:notice]%> <!-- makes sure to display only for the current instance of the page-->
+
+                            <!--<%= params.inspect%>-->
+                            <%= form_tag '/donations/update', :multipart => true do%> <!--need multipart to be able to submit files as part of a post-->
+                                <%= hidden_field_tag 'id', @donation.id%> <!--need id for update function-->
+                                <p>
+                                    <%= text_field_tag 'title', @donation.title, class: 'form-control title', placeholder: "Title (for example: \"200 pounds of bacon\")" %>
+                                </p>
+                                <p>
+                                    <%= text_area_tag 'message', @donation.message, class: "form-control message", placeholder: "Message (a description of food/ any special instructions)...", rows: "5" %>
+                                </p>
+                                <p>
+                                    <%= file_field_tag :photo1, class: "photo1"%>
+                                </p>
+                                <br>
+                                <a href="#" class="btn btn-warning btn-lg inline clear" name="Cancel">Clear Form</a>
+                                <%= submit_tag "Update Donation", class: "btn btn-success btn-lg pull-right"%>                                
+                            <% end %>
+
+                        </div>
+                    </div>
+            	</div> 
+			</div>
+		</div>
+	<!--</form>-->
+</div>
+
+

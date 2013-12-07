@@ -14,6 +14,7 @@ CSC667Groupproject::Application.routes.draw do
   post "events/create"
   get "events/edit(/:id)" => "events#edit"
   post "events/edit(/:id)" => "events#edit"
+  post "events/update"
   delete "events/destroy(/:id)" => "events#destroy"
 
  
@@ -24,6 +25,7 @@ CSC667Groupproject::Application.routes.draw do
   post "donations/create"
   get "donations/edit(/:id)" => "donations#edit"
   post "donations/edit(/:id)" => "donations#edit"
+  post "donations/update"
   delete "donations/destroy(/:id)" => "donations#destroy"
 
   resources :donations
