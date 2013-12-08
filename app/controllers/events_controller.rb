@@ -32,18 +32,21 @@ class EventsController < ApplicationController
 
   def update
     if params[:title].present? && params[:message].present? && params[:photo1].present?
-        Event.update(params[:id], :title => params[:title], :message => params[:message], :photo1=> params[:photo1])
-        render "/pages/confirmation"
-        return #if it's a creation call, exit after.
-      elsif params[:title].present? && params[:message].present?
-        Event.update(params[:id], :title => params[:title], :message => params[:message])
-        render "/pages/confirmation"
-        return #if it's a creation call, exit after.
-      else
-        redirect_to '/events/edit/' + params[:id], :notice => "Please enter both title and message fields."
-      end
+      Event.update(params[:id], :title => params[:title], :message => params[:message], :photo1=> params[:photo1])
+      render "/pages/editconfirm"
+    elsif params[:title].present? && params[:message].present?
+      Event.update(params[:id], :title => params[:title], :message => params[:message])
+      render "/pages/editconfirm"
+    else
+      redirect_to '/events/edit/' + params[:id], :notice => "Please enter both title and message fields."
+    end
   end
 
   def destroy
+    if params[:id].present?
+      @event = Event.find(params[:id])
+      @event.destroy
+      render "/pages/deleteconfirm"
+    end
   end
 end

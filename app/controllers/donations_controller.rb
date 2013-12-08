@@ -35,17 +35,20 @@ class DonationsController < ApplicationController
   	def update
   		if params[:title].present? && params[:message].present? && params[:photo1].present?
 	      Donation.update(params[:id], :title => params[:title], :message => params[:message], :photo1=> params[:photo1])
-	      render "/pages/confirmation"
-	      return #if it's a creation call, exit after.
+	      render "/pages/editconfirm"
 	  	elsif params[:title].present? && params[:message].present?
 	      Donation.update(params[:id], :title => params[:title], :message => params[:message])
-	      render "/pages/confirmation"
-	      return #if it's a creation call, exit after.
+	      render "/pages/editconfirm"
 	    else
 	    	redirect_to '/donations/edit/' + params[:id], :notice => "Please enter both title and message fields."
 	    end
   	end
 
   	def destroy
+  		if params[:id].present?
+  			@donation = Donation.find(params[:id])
+  			@donation.destroy
+  			render "/pages/deleteconfirm"
+  		end
   	end
 end

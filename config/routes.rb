@@ -6,6 +6,8 @@ CSC667Groupproject::Application.routes.draw do
   get "pages/home"
   get "pages/aboutus"  
   get "pages/confirmation"
+  get "pages/deleteconfirm"
+  get "pages/editconfirm"
 
   get "events/eventslist"
   get "events/show(/:id)" => "events#show"

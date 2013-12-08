@@ -1,35 +1,27 @@
 <div style="position:relative; top:15px;">
 	<h1>Event Posting</h1></br>
 </div>
-
+<hr><center><h4><%= @event.dayofweek %>, <%= @event.month%> <%= @event.day%> </h4></center></br>
 <div class="container">
 	<div class="col-md-4">
-		<a href="#" class="thumbnail" data-toggle="modal" data-target="#picture">
-			<img src="assets/example.jpg" alt="golden gate bridge">
-		</a>
-		<a href="#" class="thumbnail col-md-4" data-toggle="modal" data-target="#picture">
-			<img src="assets/example.jpg" alt="golden gate bridge">
-		</a>
-		<a href="#" class="thumbnail col-md-4" data-toggle="modal" data-target="#picture">
-			<img src="assets/example.jpg" alt="golden gate bridge">
-		</a>
-		<a href="#" class="thumbnail col-md-4" data-toggle="modal" data-target="#picture">
-			<img src="assets/example.jpg" alt="golden gate bridge">
-		</a>
+		<div class="thumbnail" >
+		<%= image_tag @event.photo1.url%>
+		</div>
 	</div>
 
 	<div class="col-md-5">
 		<p>
 			<span><u style="font-size:22px;">Meals With Feels</u></span> (9am to 6pm) 
-			<a href="#">Directions</a> |
-			<a href="#">Flag for Abuse</a></br>
+			<span class="pull-right" style="padding-top:10px;">
+				<%= link_to 'Edit ', :controller => "events", :action => "edit", :id => @event.id%>|
+				<%= link_to ' Delete', {:controller => "events", :action => "destroy", :id => @event.id}, confirm: "Are you sure?", 
+					method: :delete %>
+			</span>
+			<br>
 			501 Westbrook St. San Fransisco, CA 94132</br>
 			Tel: 415-123-3333 <span style="padding-left:10px; ">Email: info@mealwithfeels.org</span></br></br> 
-			<p><b>Happy Thanksgiving!</b><br>
-				On November 28, We are opening our doors to
-				the needy! Stop by to taste our slop stew, smashed potatoes, and our 
-				mystery meat surprise! If you guess the flavor of the meat, you'll be
-				entered in a raffle to win a brand new waffle iron!
+			<p><b><%= @event.title %></b><br>
+				<%= @event.message %> <!-- truncate is a function defined in application_helper.rb-->
 			</p>
 		</p>
 	</div>

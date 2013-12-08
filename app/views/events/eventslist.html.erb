@@ -1,7 +1,7 @@
 <div style="position:relative; top:15px;">
 	<h1>Get Food</h1>
 	<span style="position:relative; bottom:10px;">To get food, check out some of the upcoming events! </span>
-	<p>(1-10) of 10 <!--<a href="#" style="padding-left:15px;">Local</a> | <a href="#">All</a>--></p>
+	<p>(1-<%= @events.length %>) of <%= @events.length %><!--<a href="#" style="padding-left:15px;">Local</a> | <a href="#">All</a>--></p>
 </div>
 <br>
 
@@ -20,7 +20,8 @@
 				<%= link_to 'La Framosco French Cuisine', :controller => "events", :action => "show", :id => @events[i].id%>
 				<span class="pull-right" style="padding-left:10px;">
 					<%= link_to 'Edit ', :controller => "events", :action => "edit", :id => @events[i].id%>|
-					<%= link_to ' Delete', :controller => "events", :action => "destroy", :id => @events[i].id%>
+					<%= link_to ' Delete', {:controller => "events", :action => "destroy", :id => @events[i].id}, confirm: "Are you sure?", 
+					method: :delete %>
 				</span>
 				<br>
 				634 Curry St. San Fransisco, CA 94123</br>

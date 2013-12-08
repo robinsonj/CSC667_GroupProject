@@ -1,6 +1,6 @@
 <div style="position:relative; top:15px;">
 	<h1>List of Donations</h1> 
-	<p>(1-10) of 10 <!--<a href="#" style="padding-left:15px;">Local</a> | <a href="#">All</a>--></p>
+	<p>(1-<%= @donations.length %>) of <%= @donations.length %><!--<a href="#" style="padding-left:15px;">Local</a> | <a href="#">All</a>--></p>
 </div>
 <br>
 
@@ -17,9 +17,10 @@
 			<p>
 				<!--<a href="/donations/donationposts/' + data.id + '" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a>-->
 				<%= link_to 'La Framosco French Cuisine', :controller => "donations", :action => "show", :id => @donations[i].id%>
-				<span class="pull-right" style="padding-left:10px;">
+				<span class="pull-right" style="">
 					<%= link_to 'Edit ', :controller => "donations", :action => "edit", :id => @donations[i].id%>|
-					<%= link_to ' Delete', :controller => "donations", :action => "destroy", :id => @donations[i].id%>
+					<%= link_to ' Delete', {:controller => "donations", :action => "destroy", :id => @donations[i].id}, confirm: "Are you sure?", 
+					method: :delete %>
 				</span>
 				<br>
 				634 Curry St. San Fransisco, CA 94123</br>
