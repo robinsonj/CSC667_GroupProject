@@ -1,4 +1,5 @@
 class DonationsController < ApplicationController
+	before_filter :authenticate_user!, :except => [:donationlist]
 	def new
 		#look in application_controller.rb for set date variables
 	end

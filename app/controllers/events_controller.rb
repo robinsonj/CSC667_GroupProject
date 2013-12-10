@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+	before_filter :authenticate_user!, :except => [:eventslist]
   def new
   	#look in application_controller.rb for set date variables
   end

@@ -1,4 +1,5 @@
 CSC667Groupproject::Application.routes.draw do
+  devise_for :users
   get "profile/createprofile"
   get "profile/editprofile"
   get "profile/viewprofile"
@@ -36,7 +37,7 @@ CSC667Groupproject::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#home'
+  root :to => 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
