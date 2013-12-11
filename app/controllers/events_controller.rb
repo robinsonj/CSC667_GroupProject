@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   def create
   	if params[:title].present? && params[:message].present?
 	      Event.create(:title => params[:title], :message => params[:message], :month => params[:month],
-	      	:day => params[:day], :dayofweek=> params[:dayofweek], :photo1=> params[:photo1])
+	      	:day => params[:day], :dayofweek=> params[:dayofweek], :photo1=> params[:photo1], :user_id => current_user.id)
 	      render "/pages/confirmation"
 	      return #if it's a creation call, exit after.
 	    else

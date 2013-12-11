@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20131210201604) do
     t.string   "photo1_content_type"
     t.integer  "photo1_file_size"
     t.datetime "photo1_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "events", force: true do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20131210201604) do
     t.string   "photo1_content_type"
     t.integer  "photo1_file_size"
     t.datetime "photo1_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(version: 20131210201604) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
     t.string   "name"
     t.string   "address"
     t.string   "contact_number"
