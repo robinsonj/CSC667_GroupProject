@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-gem 'bootstrap-sass-rails'
-gem 'paperclip'
+gem 'bootstrap-sass-rails' #frontend
+gem 'paperclip' #image upload
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-gem 'devise', '~>3.0.0.rc'
+gem 'devise', '~>3.0.0.rc' #login system
 
 # Use sqlite3 as Active Record (database for development).
 group :development do
