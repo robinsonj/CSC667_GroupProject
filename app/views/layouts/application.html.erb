@@ -63,9 +63,11 @@
 
 
 <div id="content" class="container realign">
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<p class="notice"><%= flash.now[:notice] %></p>
+<p class="alert"><%= flash.now[:alert] %></p>
+
 <%= yield %>
+
 </div>
 
 

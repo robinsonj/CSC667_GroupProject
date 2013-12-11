@@ -1,5 +1,12 @@
 <div style="position:relative; left:17px;"><h1>Donate Food</h1></div>
-<div class="col-md-7" style="position:relative; left:235px;">
+<div class= "col-md-3" style="position:relative; top:48px;">
+    <h3>Current Info:</h3>
+    <%= User.find(current_user.id).name %><br>
+    <%= User.find(current_user.id).address %><br>
+    <%= User.find(current_user.id).contact_number %><br>
+    <%= User.find(current_user.id).email %><br>
+</div>
+<div class="col-md-7" style="">
 	<!--<form action="pages/confirmation" method="post">-->
 		<div class="">
 			<div class="row" style="margin-top:40px;">
@@ -8,17 +15,17 @@
                         <div class="col-md-12">			
                             <h3>Your Donation</h3>										
 
-                            <% flash.each do |key, value|%> <!-- this is how to dispplay flash msgs?. -->
-                                <p><font color="red"><%= value %></font></p>
-                            <% end %>
-                            <%flash.now[:notice]%> <!-- makes sure to display only for the current instance of the page-->
+                            <!--<% flash.each do |key, value|%> <!-- this is how to dispplay flash msgs?. -->
+                                <!--<p><font color="red"><%= value %></font></p>
+                            <% end %>-->
 
-                            <!--<%= params.inspect%>-->
+                                                        <!--<%= params.inspect%>-->
                             <%= form_tag '/donations/create', :multipart => true do%> <!--need multipart to be able to submit files as part of a post-->
                                 
                                 <%= hidden_field_tag 'month', @month%>
                                 <%= hidden_field_tag 'day', @day%>
                                 <%= hidden_field_tag 'dayofweek', @dayofweek%>
+                                <%= hidden_field_tag 'userid', current_user.id %>
 
                                 <p>
                                     <%= text_field_tag 'title', nil, class: 'form-control title', placeholder: "Title (for example: \"200 pounds of bacon\")" %>

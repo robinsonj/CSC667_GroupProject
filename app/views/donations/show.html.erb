@@ -11,14 +11,18 @@
 
 	<div class="col-md-5">
 		<p>
-			<span><u style="font-size:22px;">Meals With Feels</u></span> (9am to 6pm) 
+			<span><u style="font-size:22px;"><%= User.find(@donation.user_id).name%></u></span> <!--(9am to 6pm) -->
 			<span class="pull-right" style="padding-top:10px;">
-				<%= link_to 'Edit ', :controller => "donations", :action => "edit", :id => @donation.id%>|
-				<%= link_to ' Delete', {:controller => "donations", :action => "destroy", :id => @donation.id}, confirm: "Are you sure?", 
-					method: :delete %>
+				<% if current_user %>
+					<% if @donation.user_id == current_user.id%>
+						<%= link_to 'Edit ', :controller => "donations", :action => "edit", :id => @donation.id%>|
+						<%= link_to ' Delete', {:controller => "donations", :action => "destroy", :id => @donation.id}, confirm: "Are you sure?", 
+							method: :delete %>
+					<% end %>
+				<% end%>
 			</span><br>
-			501 Westbrook St. San Fransisco, CA 94132</br>
-			Tel: 415-123-3333 <span style="padding-left:10px; ">Email: info@mealwithfeels.org</span></br></br> 
+			<%= User.find(@donation.user_id).address%></br>
+			Tel: <%= User.find(@donation.user_id).contact_number%> <span style="padding-left:10px; ">Email: <%= User.find(@donation.user_id).email%></span></br></br> 
 			<p><b><%= @donation.title %></b><br>
 				<%= @donation.message %>
 			</p>

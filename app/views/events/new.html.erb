@@ -1,5 +1,12 @@
 <div style="position:relative; left:17px;"><h1>Post Event</h1></div>
-<div class="col-md-7" style="position:relative; left:235px;">
+<div class= "col-md-3" style="position:relative; top:48px;">
+    <h3>Current Info:</h3>
+    <%= User.find(current_user.id).name %><br>
+    <%= User.find(current_user.id).address %><br>
+    <%= User.find(current_user.id).contact_number %><br>
+    <%= User.find(current_user.id).email %><br>
+</div>
+<div class="col-md-7" style="">
     <!--<form action="pages/confirmation" method="post">-->
         <div class="">
             <div class="row" style="margin-top:40px;">
@@ -18,8 +25,8 @@
                             <button class="btn btn-warning btn-lg inline" type="Cancel" name="Cancel" value="Cancel">Cancel</button> <!--cancel button used  to clear the inout fields-->                                                          
                             <!--<a href="pages/confirmation" class="btn btn-success btn-lg pull-right link" id="postevent">Post Event</a>-->
 
-                            <% flash.each do |key, value|%> <!-- this is how to dispplay flash msgs?. -->
-                                <p><font color="red"><%= value %></font></p>
+                            <!--<% flash.each do |key, value|%> <!-- this is how to dispplay flash msgs?. -->
+                                <!--<p><font color="red"><%= value %></font></p>
                             <% end %>
                             <%flash.now[:notice]%> <!-- makes sure to display only for the current instance of the page-->
 
@@ -29,6 +36,7 @@
                                 <%= hidden_field_tag 'month', @month%>
                                 <%= hidden_field_tag 'day', @day%>
                                 <%= hidden_field_tag 'dayofweek', @dayofweek%>
+                                <%= hidden_field_tag 'userid', current_user.id%>
 
                                 <p>
                                     <%= text_field_tag 'title', nil, class: 'form-control title', placeholder: "Title, e.g. 'Come to our event! Free Food!" %>
@@ -42,7 +50,7 @@
                                 <br>
                                 
                                 <a href="#" class="btn btn-warning btn-lg inline clear" name="clear">Clear Form</a>
-                                <%= submit_tag "Post Donation", class: "btn btn-success btn-lg pull-right"%>                                
+                                <%= submit_tag "Post Event", class: "btn btn-success btn-lg pull-right"%>                                
                             <% end %>
 
                         </div>

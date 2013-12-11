@@ -17,15 +17,19 @@
 		<div class="col-md-6">
 			<p>
 				<!--<a href="/donations/donationposts/' + data.id + '" class="link"><u style="font-size:22px;">La Framosco French Cuisine</u></a>-->
-				<%= link_to 'La Framosco French Cuisine', :controller => "events", :action => "show", :id => @events[i].id%>
+				<%= link_to User.find(@events[i].user_id).name, :controller => "events", :action => "show", :id => @events[i].id%>
 				<span class="pull-right" style="padding-left:10px;">
-					<%= link_to 'Edit ', :controller => "events", :action => "edit", :id => @events[i].id%>|
-					<%= link_to ' Delete', {:controller => "events", :action => "destroy", :id => @events[i].id}, confirm: "Are you sure?", 
-					method: :delete %>
+					<% if current_user %>
+						<% if @events[i].user_id == current_user.id%>
+							<%= link_to 'Edit ', :controller => "events", :action => "edit", :id => @events[i].id%>|
+							<%= link_to ' Delete', {:controller => "events", :action => "destroy", :id => @events[i].id}, confirm: "Are you sure?", 
+							method: :delete %>
+						<% end %>
+					<% end %>
 				</span>
 				<br>
-				634 Curry St. San Fransisco, CA 94123</br>
-				Tel: 415-123-3334 <span style="padding-left:10px;">Email: info@laframosco.com</span></br>
+				<%= User.find(@events[i].user_id).address%></br>
+				Tel: <%= User.find(@events[i].user_id).contact_number%> <span style="padding-left:10px;">Email: <%= User.find(@events[i].user_id).email%></span></br>
 
 				<p><b><%= @events[i].title %></b><br>
 					<%= truncate(@events[i].message, 200) %> <!-- truncate is a function defined in application_helper.rb-->
