@@ -21,16 +21,17 @@
                                 <%= hidden_field_tag 'dayofweek', @dayofweek%>
 
                                 <p>
-                                    <%= text_field_tag 'title', nil, class: 'form-control', placeholder: "Title (for example: \"200 pounds of bacon\")" %>
+                                    <%= text_field_tag 'title', nil, class: 'form-control title', placeholder: "Title (for example: \"200 pounds of bacon\")" %>
                                 </p>
                                 <p>
-                                    <%= text_area_tag 'message', nil, class: "form-control", placeholder: "Message (a description of food/ any special instructions)...", rows: "5"%>
+                                    <%= text_area_tag 'message', nil, class: "form-control message", placeholder: "Message (a description of food/ any special instructions)...", rows: "5"%>
                                 </p>
                                 <p>
-                                    <%= file_field_tag :photo1%>
+                                    <%= file_field_tag :photo1, class: "photo1"%>
                                 </p>
+                                <br>
 
-                                <button class="btn btn-warning btn-lg inline" type="Cancel" name="Cancel" value="Cancel">Cancel</button>
+                                <a href="#" class="btn btn-warning btn-lg inline clear" name="Cancel">Clear Form</a>
                                 <%= submit_tag "Post Donation", class: "btn btn-success btn-lg pull-right"%>                                
                             <% end %>
 

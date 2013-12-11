@@ -1,0 +1,28 @@
+<div style="position:relative; top:15px;">
+	<h1>Event Posting</h1></br>
+</div>
+<hr><center><h4><%= @event.dayofweek %>, <%= @event.month%> <%= @event.day%> </h4></center></br>
+<div class="container">
+	<div class="col-md-4">
+		<div class="thumbnail" >
+		<%= image_tag @event.photo1.url%>
+		</div>
+	</div>
+
+	<div class="col-md-5">
+		<p>
+			<span><u style="font-size:22px;">Meals With Feels</u></span> (9am to 6pm) 
+			<span class="pull-right" style="padding-top:10px;">
+				<%= link_to 'Edit ', :controller => "events", :action => "edit", :id => @event.id%>|
+				<%= link_to ' Delete', {:controller => "events", :action => "destroy", :id => @event.id}, confirm: "Are you sure?", 
+					method: :delete %>
+			</span>
+			<br>
+			501 Westbrook St. San Fransisco, CA 94132</br>
+			Tel: 415-123-3333 <span style="padding-left:10px; ">Email: info@mealwithfeels.org</span></br></br> 
+			<p><b><%= @event.title %></b><br>
+				<%= @event.message %> <!-- truncate is a function defined in application_helper.rb-->
+			</p>
+		</p>
+	</div>
+</div>

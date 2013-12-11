@@ -1,4 +1,5 @@
 CSC667Groupproject::Application.routes.draw do
+  devise_for :users
   get "profile/createprofile"
   get "profile/editprofile"
   get "profile/viewprofile"
@@ -6,17 +7,29 @@ CSC667Groupproject::Application.routes.draw do
   get "pages/home"
   get "pages/aboutus"  
   get "pages/confirmation"
+  get "pages/deleteconfirm"
+  get "pages/editconfirm"
 
   get "events/eventslist"
-  get "events/eventposts"
-  get "events/postevent"
+  get "events/show(/:id)" => "events#show"
+  get "events/new"
+  get "events/create" #for debug
+  post "events/create"
+  get "events/edit(/:id)" => "events#edit"
+  post "events/edit(/:id)" => "events#edit"
+  post "events/update"
+  delete "events/destroy(/:id)" => "events#destroy"
 
+ 
   get "donations/new"
-  post "donations/new"
   get "donations/donationlist"
   get "donations/show(/:id)" => "donations#show"
-  get "donations/create"
+  get "donations/create" #for debug
   post "donations/create"
+  get "donations/edit(/:id)" => "donations#edit"
+  post "donations/edit(/:id)" => "donations#edit"
+  post "donations/update"
+  delete "donations/destroy(/:id)" => "donations#destroy"
 
   resources :donations
   
@@ -24,7 +37,7 @@ CSC667Groupproject::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#home'
+  root :to => 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
