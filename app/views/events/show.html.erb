@@ -11,15 +11,19 @@
 
 	<div class="col-md-5">
 		<p>
-			<span><u style="font-size:22px;">Meals With Feels</u></span> (9am to 6pm) 
+			<span><u style="font-size:22px;"><%= User.find(@event.user_id).name%></u></span> <!--(9am to 6pm) -->
 			<span class="pull-right" style="padding-top:10px;">
-				<%= link_to 'Edit ', :controller => "events", :action => "edit", :id => @event.id%>|
-				<%= link_to ' Delete', {:controller => "events", :action => "destroy", :id => @event.id}, confirm: "Are you sure?", 
-					method: :delete %>
+				<% if current_user %>
+					<% if @event.user_id == current_user.id%>
+						<%= link_to 'Edit ', :controller => "events", :action => "edit", :id => @event.id%>|
+						<%= link_to ' Delete', {:controller => "events", :action => "destroy", :id => @event.id}, confirm: "Are you sure?", 
+							method: :delete %>
+					<% end %>
+				<%end%>
 			</span>
 			<br>
-			501 Westbrook St. San Fransisco, CA 94132</br>
-			Tel: 415-123-3333 <span style="padding-left:10px; ">Email: info@mealwithfeels.org</span></br></br> 
+			<%= User.find(@event.user_id).address%></br>
+			Tel: <%= User.find(@event.user_id).contact_number%> <span style="padding-left:10px; ">Email: <%= User.find(@event.user_id).email%></span></br></br> 
 			<p><b><%= @event.title %></b><br>
 				<%= @event.message %> <!-- truncate is a function defined in application_helper.rb-->
 			</p>

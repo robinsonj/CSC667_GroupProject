@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
-	before_filter :authenticate_user!, :except => [:eventslist]
+	before_filter :authenticate_user!, :except => [:eventslist, :show]
   def new
   	#look in application_controller.rb for set date variables
   end
 
   def eventslist
-  	@events = Event.all
+  	@events = Event.search(params["search"])
   end
 
   def show
@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   def create
   	if params[:title].present? && params[:message].present?
 	      Event.create(:title => params[:title], :message => params[:message], :month => params[:month],
-	      	:day => params[:day], :dayofweek=> params[:dayofweek], :photo1=> params[:photo1], :user_id => current_user.id)
+	      	:day => params[:day], :dayofweek=> params[:dayofweek], :photo1=> params[:photo1], :user_id => params[:userid])
 	      render "/pages/confirmation"
 	      return #if it's a creation call, exit after.
 	    else

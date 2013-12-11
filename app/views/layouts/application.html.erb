@@ -40,15 +40,12 @@
 	      <li><a href="/pages/aboutus">About Us</a></li>
 	    </ul>
 
-	    <form action="" method="" class="navbar-form navbar-left" role="search">
+	    <form action="/events/eventslist" method="get" class="navbar-form navbar-left" role="search">
 	      <div class="form-group">
 	        <input id="search" type="text" class="form-control" placeholder="Search Events...">
 	      </div>
-	      <div class="form-group">
-	        <input id="zipcode" type="text" class="form-control" placeholder="Zip Code...">
-	      </div>
 
-	      <a id="go" href="/events/eventslist" type="submit" class="btn btn-default">Go!</a>
+	      <button id="search_button" type="submit" class="btn btn-default">Search</button>
 	    </form>
 
 	    <div class="nav navbar-nav navbar-left">
@@ -66,9 +63,11 @@
 
 
 <div id="content" class="container realign">
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<p class="notice"><%= flash.now[:notice] %></p>
+<p class="alert"><%= flash.now[:alert] %></p>
+
 <%= yield %>
+
 </div>
 
 

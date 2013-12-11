@@ -10,8 +10,7 @@ class DonationsController < ApplicationController
 
 	def show
 		if params[:id].present?
-			@donation = Donation.find(params[:id])
-			
+			@donation = Donation.find(params[:id])		
 		end
 	end
 
@@ -19,7 +18,7 @@ class DonationsController < ApplicationController
 		
 	    if params[:title].present? && params[:message].present?
 	      Donation.create(:title => params[:title], :message => params[:message], :month => params[:month],
-	      	:day => params[:day], :dayofweek=> params[:dayofweek], :photo1=> params[:photo1], :user_id => current_user.id )
+	      	:day => params[:day], :dayofweek=> params[:dayofweek], :photo1=> params[:photo1], :user_id => params[:userid] )
 	      render "/pages/confirmation"
 	      return #if it's a creation call, exit after.
 	    else
