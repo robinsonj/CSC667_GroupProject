@@ -47,7 +47,7 @@
 			<%= submit_tag("Search", class: "btn btn-default") %>
 		<% end %>
 		
-	    <div class="nav navbar-nav navbar-left">
+	    <div class="nav navbar-nav navbar-right">
 	      <% if user_signed_in? %>
 	    	<%= link_to "Edit Profile", edit_user_registration_path, :method => :get, :class => "btn btn-info", :style => "position:relative; top:7px;"%>
 	    	<%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "btn btn-success", :style => "position:relative; top:7px;"%>
