@@ -5,7 +5,8 @@ class EventsController < ApplicationController
   end
 
   def eventslist
-  	@events = Event.search(params[:search])
+  	#@events = Event.search(params[:search])
+	@events = Event.joins(:user).where('Event.user_id' == 'User.id').search(params[:search])
   end
 
   def show
