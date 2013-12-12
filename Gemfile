@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 ruby '2.0.0'
 gem 'bootstrap-sass-rails' #frontend
 gem 'paperclip' #image upload
