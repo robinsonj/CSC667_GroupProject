@@ -4,8 +4,10 @@
 <hr><center><h4><%= @event.dayofweek %>, <%= @event.month%> <%= @event.day%> </h4></center></br>
 <div class="container">
 	<div class="col-md-4">
-		<div class="thumbnail" >
-		<%= image_tag @event.photo1.url%>
+		<div class="" style="position:relative; left:50px;">
+		<% if @event.photo1_file_name %>
+			<%= image_tag @event.photo1.url, height: '200', width: '250'%>
+		<% end %>
 		</div>
 	</div>
 

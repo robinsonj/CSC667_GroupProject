@@ -4,8 +4,10 @@
 <hr><center><h4><%= @donation.dayofweek %>, <%= @donation.month%> <%= @donation.day%> </h4></center></br>
 <div class="container">
 	<div class="col-md-4">
-		<div class="thumbnail" >
-		<%= image_tag @donation.photo1.url%>
+		<div class="" style="position:relative; left:50px;">
+		<% if @donation.photo1_file_name %>
+			<%= image_tag @donation.photo1.url, height: '200', width: '250'%>
+		<% end %>
 		</div>
 	</div>
 
