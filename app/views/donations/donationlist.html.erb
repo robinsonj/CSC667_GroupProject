@@ -13,6 +13,8 @@
 		<div class=" col-md-2" >
 		<% if @donations[i].photo1_file_name %>
 			<%= image_tag @donations[i].photo1.url , height: '120', width: '135'%>
+		<% else %>
+			<%= image_tag "/assets/noimage3.png", height: '120', width: '135'%>
 		<% end %>
 		</div>
 		<div class="col-md-6">
